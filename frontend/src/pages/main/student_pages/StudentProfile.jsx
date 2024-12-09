@@ -1,60 +1,49 @@
-import React, { useState, useEffect } from "react";
-import {
-  Flex,
-  Text,
-  Icon,
-  FormControl,
-  FormLabel,
-  Input,
-  Button,
-  VStack,
-  Divider
-} from "@chakra-ui/react";
-import styles from "../ProfilePage.module.css";
-
-import axiosInstance from "../../../axiosInstance";
-
+// src/pages/main/student_pages/StudentProfile.jsx
+import React, { useState, useEffect } from 'react';
+import { Flex, Text, VStack, Divider } from "@chakra-ui/react";
+import axiosInstance from '../../../axiosInstance';
+import styles from "./StudentProfile.module.css";
 
 export default function StudentProfile() {
+    const [studentInfo, setStudentInfo] = useState({});
 
-    const [ studentInfo, setStudentInfo ] = useState({});
-
-    const getGrades = async () => {
+    const getStudentInfo = async () => {
         try {
-            let response = await axiosInstance.get("/api/student/info");
-            console.log(response.data);
+            const response = await axiosInstance.get("/api/student/info");
             if (response.status === 200) {  
-                setStudentInfo(response.data)
+                setStudentInfo(response.data);
             }
-        } 
-        catch (error) {
-            console.error(error);
+        } catch (error) {
+            console.error('Error fetching student info:', error);
         }
     }
 
-        // Get the student's graded courses
-        useEffect(() => {
-            getGrades();
-        }, []);
+    useEffect(() => {
+        getStudentInfo();
+    }, []);
 
     return (
-        <Flex className={styles.container}>
-          <Flex className={styles.bodyContainer}>
-            <Text className={styles.headerText}>Student Profile</Text>
-            <VStack>
-                <Text className={styles.headerText}> Name </Text>
-                <Text className={styles.formText}> {studentInfo.first_name} {studentInfo.last_name}</Text>
-                <Divider/>
-                <Text className={styles.headerText}> Email </Text>
-                <Text className={styles.formText}> {studentInfo.email}</Text>
-                <Divider/>
-                <Text className={styles.headerText}> Major </Text>
-                <Text className={styles.formText}> {studentInfo.major}</Text>
-                <Divider/>
-                <Text className={styles.headerText}> Academic Year </Text>
-                <Text className={styles.formText}> {studentInfo. academic_year}</Text>
+        <Flex className={styles.container} direction="column" p={4}>
+            <Text fontSize="2xl" fontWeight="bold">Student Profile</Text>
+            <Divider my={4} />
+            <VStack align="start" spacing={4}>
+                <Flex w="100%">
+                    <Text className={styles.headerText} w="150px"><strong>Name:</strong></Text>
+                    <Text className={styles.formText}>{studentInfo.first_name} {studentInfo.last_name}</Text>
+                </Flex>
+                <Flex w="100%">
+                    <Text className={styles.headerText} w="150px"><strong>Email:</strong></Text>
+                    <Text className={styles.formText}>{studentInfo.email}</Text>
+                </Flex>
+                <Flex w="100%">
+                    <Text className={styles.headerText} w="150px"><strong>Major:</strong></Text>
+                    <Text className={styles.formText}>{studentInfo.major}</Text>
+                </Flex>
+                <Flex w="100%">
+                    <Text className={styles.headerText} w="150px"><strong>Academic Year:</strong></Text>
+                    <Text className={styles.formText}>{studentInfo.academic_year}</Text>
+                </Flex>
             </VStack>
-          </Flex>
         </Flex>
-      );
+    );
 }

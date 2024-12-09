@@ -1,0 +1,10 @@
+/* AddCourse.module.css */
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    /* Remove centering to align content to the top */
+    /* align-items: center; */
+    /* justify-content: center; */
+    /* height: 100vh; */
+}

@@ -1,0 +1,11 @@
+/* StudentMyCourses.module.css */
+.container {
+    display: flex;
+}
+.statusText {
+    font-size: 20px;
+}
+.messageText {
+    font-size: 16px;
+}
+

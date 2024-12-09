@@ -1,22 +1,21 @@
 -- Create Type enums --
-DO
-'
-DECLARE
-BEGIN
-    IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = ''days'') THEN
-        CREATE TYPE DAYS AS ENUM (''M'', ''T'', ''W'', ''TH'', ''F'', ''SAT'', ''SUN'');
-    END IF;
-    IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = ''enrollment_status'') THEN
-        CREATE TYPE ENROLLMENT_STATUS AS ENUM (''ENROLLED'', ''DROPPED'', ''COMPLETED'');
-    END IF;
-    IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = ''grades'') THEN
-        CREATE TYPE GRADES AS ENUM (''A'', ''A-'', ''B+'', ''B'', ''B-'', ''C+'', ''C'', ''C-'', ''D'', ''F'', ''N/A'');
-    END IF;
-    IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = ''academic_year'') THEN
-        CREATE TYPE ACADEMIC_YEAR AS ENUM(''FRESHMAN'', ''SOPHOMORE'', ''JUNIOR'', ''SENIOR'');
-    END IF;
-END;
-' LANGUAGE PLPGSQL;
+
+-- DECLARE
+-- BEGIN
+--     IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = ''days'') THEN
+--         CREATE TYPE DAYS AS ENUM (''M'', ''T'', ''W'', ''TH'', ''F'', ''SAT'', ''SUN'');
+--     END IF;
+--     IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = ''enrollment_status'') THEN
+--         CREATE TYPE ENROLLMENT_STATUS AS ENUM (''ENROLLED'', ''DROPPED'', ''COMPLETED'');
+--     END IF;
+--     IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = ''grades'') THEN
+--         CREATE TYPE GRADES AS ENUM (''A'', ''A-'', ''B+'', ''B'', ''B-'', ''C+'', ''C'', ''C-'', ''D'', ''F'', ''N/A'');
+--     END IF;
+--     IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = ''academic_year'') THEN
+--         CREATE TYPE ACADEMIC_YEAR AS ENUM(''FRESHMAN'', ''SOPHOMORE'', ''JUNIOR'', ''SENIOR'');
+--     END IF;
+-- END;
+--  LANGUAGE PLPGSQL;
 
 
 -- Create the tables --
@@ -101,7 +100,5 @@ CREATE TABLE IF NOT EXISTS instructor_to_courses_days (
   "day" DAYS NOT NULL,
   PRIMARY KEY (instructor_course_id, "day")
 );
-
-
 
 

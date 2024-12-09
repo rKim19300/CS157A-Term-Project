@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+}
+
+.bodyContainer {
+    flex: 1;
+}
+
+.headerText {
+    font-size: 24px;
+}
+
+.formText {
+    font-size: 18px;
+}

@@ -1,0 +1,6 @@
+/* src/pages/main/instructor_pages/InstructorProfile.module.css */
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}

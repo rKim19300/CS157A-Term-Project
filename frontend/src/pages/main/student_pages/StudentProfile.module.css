@@ -1,0 +1,19 @@
+/* StudentProfile.module.css */
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.bodyContainer {
+    flex: 1;
+}
+
+.headerText {
+    font-size: 2xl; /* Adjusted to match Chakra UI font sizes */
+    font-weight: bold;
+}
+
+.formText {
+    font-size: lg; /* Adjusted to match Chakra UI font sizes */
+}

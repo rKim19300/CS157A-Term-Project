@@ -1,0 +1,11 @@
+/* src/pages/main/student_pages/Student.module.css */
+.container {
+    display: flex;
+    flex-direction: column; /* Added to stack TopBar on top */
+    height: 100vh; /* Ensure full height */
+}
+
+.menuContent {
+    display: flex;
+    flex: 1;
+}
